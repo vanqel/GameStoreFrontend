@@ -18,7 +18,7 @@ const GetProductsCard = ({ category }) => {
     return (
       <div className="section-container">
         {products.map((product) => (
-          <ItemCard index={product.index} name={product.name} imageSrc={"http://localhost:8080"+product.imageSrv} value={product.value} />
+          <ItemCard index={product.index} name={product.name} imageSrc={"https://openstorebackendkotlin.onrender.com"+product.imageSrv} value={product.value} />
         ))}
       </div>
     );

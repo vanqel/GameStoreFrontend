@@ -1,5 +1,6 @@
 import React from 'react'
 
+import getLink from "../api/kassa-api";
 import PropTypes from 'prop-types'
 
 import './item-page.css'
@@ -18,7 +19,7 @@ const ItemPage = (props) => {
           <span className="item-card-currency">{props.currency}</span>
           <span className="item-card-value">{props.value}</span>
         </div>
-        <a href={`https://auth.robokassa.ru/Merchant/Index.aspx?MerchantLogin=robo-demo-test&InvId=0&IsTest=1&Culture=ru&Encoding=utf-8&OutSum=10000&Receipt=%257B%2522items%2522%253A%255B%257B%2522name%2522%253A%2522%25D0%2594%25D0%25BE%25D0%25BA%25D1%2583%25D0%25BC%25D0%25B5%25D0%25BD%25D1%2582%25D0%25B0%25D1%2586%25D0%25B8%25D1%258F%2520Robokassa%2522%252C%2522quantity%2522%253A1%252C%2522sum%2522%253A5000%252C%2522payment_method%2522%253A%2522full_payment%2522%252C%2522payment_object%2522%253A%2522payment%2522%252C%2522tax%2522%253A%2522vat20%2522%257D%252C%257B%2522name%2522%253A%2522%25D0%2594%25D0%25BE%25D0%25BA%25D1%2583%25D0%25BC%25D0%25B5%25D0%25BD%25D1%2582%25D0%25B0%25D1%2586%25D0%25B8%25D1%258F%2520Robo.market%2522%252C%2522quantity%2522%253A1%252C%2522sum%2522%253A5000%252C%2522payment_method%2522%253A%2522full_payment%2522%252C%2522payment_object%2522%253A%2522payment%2522%252C%2522tax%2522%253A%2522vat20%2522%257D%255D%257D&SignatureValue=bd7588af055879f93d48276fe07cd0fe`} ><button class="button">Купить</button></a>
+        <a href={`${getLink(props.index)}`} ><button className="button">Купить</button></a>
       </div>
     </div>
   )

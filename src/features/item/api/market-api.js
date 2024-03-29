@@ -4,7 +4,7 @@ import axios from "axios";
 
 const getProductOne = async (index ) => {
   try {
-    const response = await axios.get(`http://localhost:8080/product/${index}`);
+    const response = await axios.get(`https://openstorebackendkotlin.onrender.com/product/${index}`);
     console.log(index)
     if (response.status === 200) {
       const responseData = response.data;

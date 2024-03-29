@@ -1,9 +1,6 @@
 import React from "react";
-    
+
 const renderUI = (email, setEmail, password, setPassword, handleLogin, handleLogout) => {
-
-
-    
     return (
       <div className='centered-container'>
         <div className='selection-container home-container'>
@@ -28,5 +25,5 @@ const renderUI = (email, setEmail, password, setPassword, handleLogin, handleLog
       </div>
     );
   };
-  
+
   export default renderUI;

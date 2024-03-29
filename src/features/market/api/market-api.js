@@ -3,14 +3,13 @@ import '../../../app/home.css'
 import axios from "axios";
 const getProducts = async (category) => {
   try {
-    var response = await axios.get(`http://localhost:8080/product`);
-    if (category == "all"){
-      response = await axios.get(`http://localhost:8080/product`);
+    var response = await axios.get(`https://openstorebackendkotlin.onrender.com/product`);
+    if (category === "all" || category===null){
+      response = await axios.get(`https://openstorebackendkotlin.onrender.com/product`);
     }
     else{
-      response = await axios.get(`http://localhost:8080/product/category/${category}`);
+      response = await axios.get(`https://openstorebackendkotlin.onrender.com/product/category/${category}`);
     }
-    console.log(category)
     if (response.status === 200) {
       const responseData = response.data;
 

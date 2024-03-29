@@ -8,7 +8,10 @@ import { useLocation } from 'react-router-dom';
 const WidgetMarket = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const category = searchParams.get('category');
+  let category = searchParams.get('category');
+  if (category === null){
+    category = "all"
+  }
   return(
     <div className="home-container">
 

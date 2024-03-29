@@ -7,7 +7,7 @@ const callApi = async (username, password, history) => {
     };
 
   try {
-    const response = await axios.post('http://localhost:8080/auth/login', { username, password });
+    const response = await axios.post('https://openstorebackendkotlin.onrender.com/auth/login', { username, password });
     const { userOutput } = response.data;
     localStorage.setItem('username', userOutput.username);
     localStorage.setItem('id', userOutput.id);
