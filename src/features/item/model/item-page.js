@@ -7,21 +7,25 @@ import './item-page.css'
 
 const ItemPage = (props) => {
   return (
-    <div className={`item-card-gallery-card ${props.rootClassName} `}>
-      <img
-        src={props.imageSrc}
-        className="item-card-image"
-      />
-      <div className="item-card-container">
-        <h3 className="item-card-text">{props.name}</h3>
-        <p>{props.description}</p>
-        <div className="item-card-container2">
-          <span className="item-card-currency">{props.currency}</span>
-          <span className="item-card-value">{props.value}</span>
+      <div className={`item-card-gallery-card ${props.rootClassName} `}>
+        <div className="item-card-container">
+          <div>
+            <img
+                src={props.imageSrc}
+                className="item-card-image"
+            />
+          </div>
+          <div className="item-card-details">
+            <h3 className="item-card-text">{props.name}</h3>
+            <p>{props.description}</p>
+            <div className="item-card-container2">
+              <span className="item-card-currency">{props.currency}</span>
+              <span className="item-card-value">{props.value}</span>
+            </div>
+            <a href={`${getLink(props.index)}`} ><button className="button">Купить</button></a>
+          </div>
         </div>
-        <a href={`${getLink(props.index)}`} ><button className="button">Купить</button></a>
       </div>
-    </div>
   )
 }
 

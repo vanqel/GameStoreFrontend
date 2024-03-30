@@ -4,6 +4,14 @@ import '../../../app/home.css'
 
 
 const NavBarHome = (props) => {
+  const Ref = () =>{
+    if (localStorage.getItem('Access') != null){
+      return "/profile"
+    }
+    else {
+      return "/login"
+    }
+  }
     return (
 <div className="home-navbar">
 <header data-role="Header" className="home-header max-width-container">
@@ -11,7 +19,7 @@ const NavBarHome = (props) => {
     <div className="home-middle">
     <span className="navbar-logo-title"><a href="/">OS</a></span>
       <div className="home-left">
-        <span className="navbar-link">Профиль</span>
+        <a href={Ref()} className="navbar-link">Профиль</a>
         <span className="navbar-link"><a href="/market?category=all">Магазин</a></span>
         <span className="navbar-link">О нас</span>
         <span className="navbar-link">Контакты</span>

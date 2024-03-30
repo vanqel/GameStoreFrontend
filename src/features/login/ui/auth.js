@@ -1,10 +1,9 @@
 import React from "react";
-
 const renderUI = (email, setEmail, password, setPassword, handleLogin, handleLogout) => {
     return (
       <div className='centered-container'>
         <div className='selection-container home-container'>
-          <h2>Форма входа</h2>
+          <h2>Вход</h2>
           <input className='home-textinput' style={{margin: 0.5 + '%'}}
             type="login"
             placeholder="Логин"

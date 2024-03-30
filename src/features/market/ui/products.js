@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import ItemCard from "../model/item-card";
 import '../../../app/home.css'
 import getProducts from '../api/market-api'
-import { element } from "prop-types";
 
 const GetProductsCard = ({ category }) => {
     const [products, setProducts] = useState([]);
