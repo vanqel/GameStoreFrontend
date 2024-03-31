@@ -6,7 +6,7 @@ const callApi = async (username, password,setError, history, index) => {
       if (index == null){
         history.push(`/profile`);
       }else{
-        history.push(`/product?index${index}`)
+        history.push(`/product?index=${index}`)
       }
     };
 

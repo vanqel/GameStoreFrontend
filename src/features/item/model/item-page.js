@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import './item-page.css'
 import {useHistory} from "react-router-dom";
 
-const ItemPage = ({props, handleSubmit}) => {
+const ItemPage = (props) => {
 
   return (
       <div className={`item-card-gallery-card `}>
@@ -28,7 +28,6 @@ const ItemPage = ({props, handleSubmit}) => {
               <span className="item-card-currency">{props.currency}</span>
               <span className="item-card-value">{props.value}</span>
             </div>
-            <button className="button" onClick={handleSubmit}>Купить</button>
 
           </div>
         </div>
@@ -39,8 +38,7 @@ const ItemPage = ({props, handleSubmit}) => {
 ItemPage.defaultProps = {
   index: 1,
   name: 'Loading',
-  imageSrc:
-      '-',
+  imageSrc: '-',
   currency: 'Р',
   value: '0',
   description: '',
@@ -51,7 +49,7 @@ ItemPage.propTypes = {
   name: PropTypes.string,
   imageSrc: PropTypes.string,
   currency: PropTypes.string,
-  value: PropTypes.number,
+  value: PropTypes.string,
   description: PropTypes.string,
 }
 

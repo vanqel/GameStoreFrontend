@@ -5,7 +5,7 @@ import {useHistory} from "react-router-dom";
 const getLink = async (index, history ) => {
     try {
         if (localStorage.getItem('Access') == null){
-            return "XUI"
+            return index
         }
         const response = await axios.get(`https://openstorebackendkotlin.onrender.com/kassa/${index}`, {
             headers: {
@@ -20,9 +20,9 @@ const getLink = async (index, history ) => {
             return responseData;
         } else {
             if(response.status === 403){
-                return "XUI";
+                return index;
             }
-            else return "XUI"
+            else return null
         }
 
 
