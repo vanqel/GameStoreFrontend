@@ -8,7 +8,7 @@ import {useHistory} from "react-router-dom";
 const ItemPage = ({props, handleSubmit}) => {
 
   return (
-      <div className={`item-card-gallery-card ${props.rootClassName} `}>
+      <div className={`item-card-gallery-card `}>
         <div className="item-card-container">
           <div>
             <img
