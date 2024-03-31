@@ -18,13 +18,7 @@ async function getMe(history) {
             return responseData;
         } else {
             if(response.status === 403){
-                localStorage.removeItem('username',);
-                localStorage.removeItem('id');
-                localStorage.removeItem('roles');
-                localStorage.removeItem('Access')
-                localStorage.removeItem('Refresh')
-                history.push("/")
-                return null
+                return 403
             }
             else return null;
         }
