@@ -1,6 +1,6 @@
 import axios from "axios";
 
-async function getMe() {
+async function getMe(history) {
     try {
         const response = await axios.get("https://openstorebackendkotlin.onrender.com/auth/me", {
             withCredentials: true, // Set withCredentials to true to include cookies
@@ -23,6 +23,7 @@ async function getMe() {
                 localStorage.removeItem('roles');
                 localStorage.removeItem('Access')
                 localStorage.removeItem('Refresh')
+                history.push("/")
                 return null
             }
             else return null;

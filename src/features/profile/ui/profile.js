@@ -21,7 +21,7 @@ const Profile = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const profile = await getMe();
+            const profile = await getMe(history);
             setProfile(profile);
         };
         fetchData();
