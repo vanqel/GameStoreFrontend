@@ -17,8 +17,15 @@ async function getMe() {
 
             return responseData;
         } else {
-            console.error("Error: Failed to fetch data.");
-            return null;
+            if(response.status === 403){
+                localStorage.removeItem('username',);
+                localStorage.removeItem('id');
+                localStorage.removeItem('roles');
+                localStorage.removeItem('Access')
+                localStorage.removeItem('Refresh')
+                return null
+            }
+            else return null;
         }
     } catch (error) {
         console.error("Request error:", error);

@@ -51,7 +51,7 @@ const renderUI = (login, setLogin,
                       <div className="error-message">
 
                               {Object.keys(error).map(key => (
-                                  <span key={key}><br/> {error[key]}</span>
+                                  <span key={key}><br/> {key}:{error[key]}</span>
                               ))}
                       </div>
                   )}
