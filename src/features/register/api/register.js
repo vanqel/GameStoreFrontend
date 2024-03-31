@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const register = async (username, password, email, phone, setError, history, index) => {
   const handleRedirect = () => {
     if (index == null) {
