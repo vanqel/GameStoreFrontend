@@ -1,33 +1,26 @@
-import axios from "axios";
+import axios from 'axios';
 
-const register = async (username, password, email, phone, setError, history, index) => {
-  const handleRedirect = () => {
-    if (index == null) {
-      history.push(`/profile`);
-    } else {
-      history.push(`/product?index=${index}`);
-    }
-  };
+const register = async (username, password,email,phone,setError, history, index) => {
+
+    const handleRedirect = () => {
+      if (index == null){
+        history.push(`/profile`);
+      }else{
+        history.push(`/product?index${index}`)
+      }
+    };
 
   try {
     const response = await axios.post('https://openstorebackendkotlin.onrender.com/user/register', {
-      "username": username,
-      "password": password,
-      "email": email,
-      "phone": phone
-    }, {
-      withCredentials: true,
-      credentials: 'include'
+      "username":username, "password":password, "email":email, "phone":phone }, {
+      withCredentials: true, // Include cookies in the request
+      credentials: 'include' // Save cookies that come in the response
     });
 
-    handleRedirect();
+    handleRedirect()
   } catch (error) {
-    if (error.response && error.response.data) {
-      setError(error.response.data.errors);
-    } else {
-      // Handle the case where error.response or error.response.data is undefined
-      setError({}); // Or any default error object
-    }
+    setError(error.response.data.errors)
   }
 };
+
 export default register;
