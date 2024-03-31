@@ -8,7 +8,7 @@ const register = async (username, password, email, phone, setError, history, ind
   };
 
   try {
-    const response = await axios.post('http://localhost:8080/user/register', {
+    const response = await axios.post('https://openstorebackendkotlin.onrender.com/user/register', {
       "username": username,
       "password": password,
       "email": email,
