@@ -14,16 +14,9 @@ RUN npm install
 COPY . .
 
 # Собираем React приложение с помощью Craco
-RUN npm run build:craco
+RUN npm run build
 
-# Используем lightweight образ nginx для production stage
-FROM nginx:alpine
-
-# Копируем статические файлы React приложения из build stage
-COPY --from=build /app/build /usr/share/nginx/html
-
-# Экспонируем порт 80, на котором будет работать Nginx
-EXPOSE 80
+EXPOSE 3000
 
 # Команда для запуска Nginx в контейнере
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["npm", "start"]
