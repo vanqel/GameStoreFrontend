@@ -22,15 +22,7 @@ const Profile = () => {
     useEffect(() => {
         const fetchData = async () => {
             const profile = await getMe();
-            if (profile === 403){
-                localStorage.removeItem('username',);
-                localStorage.removeItem('id');
-                localStorage.removeItem('roles');
-                localStorage.removeItem('Access')
-                localStorage.removeItem('Refresh')
-                history.push("/")
-                return
-            }
+
             setProfile(profile);
         };
         fetchData();
@@ -47,70 +39,75 @@ const Profile = () => {
         fetchOrders();
     }, []);
 
-
+    if (profile === 403){
+        history.push("/")
+    }
     return (
         <div >
-            <div style={{marginLeft: 10 + '%', marginRight: 10 + '%', marginTop: 2 + '%'}}>
-                <div>
-                    <span className="home-text19 Heading-3">{profile.sub}</span>
-                    <span className="home-text20">
+            {profile && (
+                <div style={{marginLeft: 10 + '%', marginRight: 10 + '%', marginTop: 2 + '%'}}>
+                    <div>
+                        <span className="home-text19 Heading-3">{profile.sub}</span>
+                        <span className="home-text20">
                             <br></br>
                             <span>Ваши заказы</span>
 
                         </span>
-                </div>
-                <br></br>
-                <div style={{display: 'flex', justifyContent: 'center', minWidth:"800px"}}>
-                    <table style={{
-                        border: '1px solid black',
-                        borderCollapse: 'collapse',
-                        width: '100%',
-                        maxWidth: '1000px',
-                        textAlign: "center"
-                    }}>
-                        <tr>
-                            <th>Номер заказа</th>
-                            <th>Продукт</th>
-                            <th>Статус</th>
-                            <th>Ссылка на скачивание</th>
-                        </tr>
-                        {orders && orders.map((order) => {
-                            if (order && order.invID && order.link_download && order.status && order.product) {
-                                return (
-                                    <Order invID={order.invID} link={order.link_download} status={order.status}
-                                           title={order.product}/>
-                                );
-                            } else {
-                                return null;
-                            }
-                        })}
-                    </table>
-                </div>
+                    </div>
+                    <br></br>
+                    <div style={{display: 'flex', justifyContent: 'center', minWidth: "800px"}}>
+                        <table style={{
+                            border: '1px solid black',
+                            borderCollapse: 'collapse',
+                            width: '100%',
+                            maxWidth: '1000px',
+                            textAlign: "center"
+                        }}>
+                            <tr>
+                                <th>Номер заказа</th>
+                                <th>Продукт</th>
+                                <th>Статус</th>
+                                <th>Ссылка на скачивание</th>
+                            </tr>
+                            {orders && orders.map((order) => {
+                                if (order && order.invID && order.link_download && order.status && order.product) {
+                                    return (
+                                        <Order invID={order.invID} link={order.link_download} status={order.status}
+                                               title={order.product}/>
+                                    );
+                                } else {
+                                    return null;
+                                }
+                            })}
+                        </table>
+                    </div>
 
-                {Array.isArray(profile.auth) && (
-                    <div>
-                        {profile.auth.includes("ADMIN") && (
-                            <div>
+                    {Array.isArray(profile.auth) && (
+                        <div>
+                            {profile.auth.includes("ADMIN") && (
                                 <div>
+                                    <div>
                                         <span className="home-text20">
                                         <br></br>
                                         <span>Создать новый </span>
 
                                          </span>
-                                </div>
-                                <br></br>
-                                <NewOrder/>
-                            </div>)
-                        }
+                                    </div>
+                                    <br></br>
+                                    <NewOrder/>
+                                </div>)
+                            }
+                        </div>
+                    )}
+
+                    <div style={{justifyContent: "center"}}>
+                        <br></br>
+                        <button className="button" onClick={() => logout(history)}>Выйти из аккаунта</button>
+
                     </div>
-                )}
-
-                <div style={{justifyContent: "center"}}>
-                    <br></br>
-                    <button className="button" onClick={() => logout(history)}>Выйти из аккаунта</button>
-
                 </div>
-            </div>
+            )}
+
 
         </div>
     )
