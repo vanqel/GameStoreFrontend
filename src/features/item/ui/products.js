@@ -18,6 +18,7 @@ const GetProductsPage = ({index}) => {
                 setProduct(productData);
 
                 if (productData !== "error") {
+                    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAA", index)
                     const linkData = await getLink(index);
                     setLink(linkData);
                 }
