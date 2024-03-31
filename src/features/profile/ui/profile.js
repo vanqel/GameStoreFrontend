@@ -65,7 +65,7 @@ const Profile = () => {
                             <th>Статус</th>
                             <th>Ссылка на скачивание</th>
                         </tr>
-                        {orders.map((order) => {
+                        {orders && orders.map((order) => {
                             if (order && order.invID && order.link_download && order.status && order.product) {
                                 return (
                                     <Order invID={order.invID} link={order.link_download} status={order.status}
