@@ -44,7 +44,7 @@ const Profile = () => {
     }
     return (
         <div >
-            {profile && (
+            {profile ? (
                 <div style={{marginLeft: 10 + '%', marginRight: 10 + '%', marginTop: 2 + '%'}}>
                     <div>
                         <span className="home-text19 Heading-3">{profile.sub}</span>
@@ -106,7 +106,9 @@ const Profile = () => {
 
                     </div>
                 </div>
-            )}
+            ) : (<div>
+                Кто то другой вошёл в ваш аккаунт
+            </div>)}
 
 
         </div>
