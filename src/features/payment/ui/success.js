@@ -14,8 +14,8 @@ const Success = () => {
 
     React.useEffect(() => {
         const redirectToHomePage = async () => {
-            history.push('/');
             await sendSuccessPayment(OutSum, InvId, SignatureValue);
+            history.push('/');
         };
 
         redirectToHomePage();
