@@ -5,26 +5,8 @@ import PropTypes from 'prop-types'
 import './item-page.css'
 import {useHistory} from "react-router-dom";
 
-const ItemPage = (props) => {
-  const [link, setLink] = useState('');
-  const history = useHistory()
-  useEffect(() => {
-    const fetchData = async () => {
-      const linkData = await getLink(props.index);
-      setLink(linkData);
-    };
-    fetchData();
-  }, []);
-  const handleSubmit = async () => {
-    if(props.title === "Не найдено"){
-      history.push("/")
-    }else{
-      if(link === "XUI"){
-        history.push("/login")
-      }else window.location.replace(link)
-    }
+const ItemPage = ({props, handleSubmit}) => {
 
-  }
   return (
       <div className={`item-card-gallery-card ${props.rootClassName} `}>
         <div className="item-card-container">
