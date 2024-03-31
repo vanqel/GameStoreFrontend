@@ -1,9 +1,13 @@
 import axios from 'axios';
 
-const callApi = async (username, password, history) => {
+const callApi = async (username, password,setError, history, index) => {
   
     const handleRedirect = () => {
-      history.push(`/profile`);
+      if (index == null){
+        history.push(`/profile`);
+      }else{
+        history.push(`/product?index${index}`)
+      }
     };
 
   try {
@@ -16,10 +20,11 @@ const callApi = async (username, password, history) => {
     localStorage.setItem('id', userOutput.id);
     localStorage.setItem('roles', JSON.stringify(userOutput.roles));
     localStorage.setItem('Access', tokenOutput.access)
+    localStorage.setItem('Refresh', tokenOutput.refresh)
 
     handleRedirect()
   } catch (error) {
-    console.error('Ошибка при входе:', error);
+    setError(error.response.data.errors)
   }
 };
 

@@ -15,7 +15,7 @@ const GetProductsCard = ({ category }) => {
       fetchProducts();
     }, [category]);
     return (
-      <div className="section-container">
+      <div className="section-container " style={{ display: "flex", justifyContent:"left", flexWrap:"wrap"}}>
         {products.map((product) => (
           <ItemCard index={product.index} name={product.name} imageSrc={"https://openstorebackendkotlin.onrender.com"+product.imageSrv} value={product.value} />
         ))}

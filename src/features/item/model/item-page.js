@@ -1,28 +1,53 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 
 import getLink from "../api/kassa-api";
 import PropTypes from 'prop-types'
-
 import './item-page.css'
+import {useHistory} from "react-router-dom";
 
 const ItemPage = (props) => {
+  const [link, setLink] = useState('');
+  const history = useHistory()
+  useEffect(() => {
+    const fetchData = async () => {
+      const linkData = await getLink(props.index);
+      setLink(linkData);
+    };
+    fetchData();
+  }, []);
+  const handleSubmit = async () => {
+    if(props.title === "Не найдено"){
+      history.push("/")
+    }else{
+      if(link === "XUI"){
+        history.push("/login")
+      }else window.location.replace(link)
+    }
+
+  }
   return (
       <div className={`item-card-gallery-card ${props.rootClassName} `}>
         <div className="item-card-container">
           <div>
             <img
                 src={props.imageSrc}
-                className="item-card-image"
+                style={{maxHeight:"300px"}}
             />
           </div>
-          <div className="item-card-details">
+          <br/>
+          <div className="item-card-details" style={{
+            display:"contents",
+            width: "500px",
+            justifyContent: "center",
+            textAlign: "center"}}>
             <h3 className="item-card-text">{props.name}</h3>
             <p>{props.description}</p>
             <div className="item-card-container2">
               <span className="item-card-currency">{props.currency}</span>
               <span className="item-card-value">{props.value}</span>
             </div>
-            <a href={`${getLink(props.index)}`} ><button className="button">Купить</button></a>
+            <button className="button" onClick={handleSubmit}>Купить</button>
+
           </div>
         </div>
       </div>
@@ -31,23 +56,21 @@ const ItemPage = (props) => {
 
 ItemPage.defaultProps = {
   index: 1,
-  name: 'Project Title',
+  name: 'Loading',
   imageSrc:
-    'https://images.unsplash.com/photo-1484980972926-edee96e0960d?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDI0fHxmb29kfGVufDB8fHx8MTYyNjQ0OTIzNQ&ixlib=rb-1.2.1&w=1500',
+      '-',
   currency: 'Р',
-  value: '500',
-  rootClassName: '',
-  description: ''
+  value: '0',
+  description: '',
 }
 
 ItemPage.propTypes = {
-  index: PropTypes.string,
+  index: PropTypes.number,
   name: PropTypes.string,
   imageSrc: PropTypes.string,
   currency: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.number,
   description: PropTypes.string,
-  rootClassName: PropTypes.string,
 }
 
 export default ItemPage

@@ -18,7 +18,7 @@ const getProductOne = async (index ) => {
     }
   } catch (error) {
     console.error('Произошла ошибка:', error);
-    return [];
+    return "error";
   }
 };
 export default getProductOne;

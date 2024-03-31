@@ -48,7 +48,7 @@
   margin-right: -32px;
 }
 .home-textinput {
-  width: 150%;
+  width: 90%;
   max-width: var(--dl-size-size-xxlarge);
   transition: 0.3s;
   border-color: var(--dl-color-gray-700);
@@ -59,6 +59,8 @@
   border-right-width: 0px;
 }
 .home-textinput:hover {
+  width: 100%;
+
   border-color: var(--dl-color-pallet-yellow);
 }
 .home-middle {

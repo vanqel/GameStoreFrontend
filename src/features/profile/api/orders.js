@@ -6,7 +6,8 @@ async function getOrders() {
             withCredentials: true, // Set withCredentials to true to include cookies
             credentials: 'include', // Attach all cookies to the request
             headers: {
-                'Authorization': `Bearer ${localStorage.getItem('Access')}`// Set the Authorization header with the token
+                'Authorization': `Bearer ${localStorage.getItem('Access')}`,
+                'Refresh' : `Refresh ${localStorage.getItem('Refresh')}`
             }
         });
 

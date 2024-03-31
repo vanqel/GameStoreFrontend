@@ -10,14 +10,15 @@ const ItemCard = (props) => {
   
   const handleRedirect = () => {
     console.log(props.index)
+
     history.push(`/product?index=${props.index}`);
   };
 
   return (
-    <div className={`item-card-gallery-card ${props.rootClassName} `}>
+    <div className={`item-card-gallery-card`} style={{margin:"1%", width:"200px", height:"300px"}}>
       <img
         src={props.imageSrc}
-        className="item-card-image"
+        style={{width:"150px",height:"300px",overflow:"hidden",objectFit:"cover" }}
       />
       <div className="item-card-container">
         <h3 className="item-card-text">{props.name}</h3>
@@ -33,11 +34,11 @@ const ItemCard = (props) => {
 
 ItemCard.defaultProps = {
   index: 1,
-  name: 'Project Title',
+  name: 'Loading',
   imageSrc:
-    'https://images.unsplash.com/photo-1484980972926-edee96e0960d?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDI0fHxmb29kfGVufDB8fHx8MTYyNjQ0OTIzNQ&ixlib=rb-1.2.1&w=1500',
+    '-',
   currency: 'Р',
-  value: '500',
+  value: '0',
   rootClassName: '',
 }
 
@@ -48,7 +49,6 @@ ItemCard.propTypes = {
   currency: PropTypes.string,
   value: PropTypes.string,
   description: PropTypes.string,
-  rootClassName: PropTypes.string,
 }
 
 export default ItemCard

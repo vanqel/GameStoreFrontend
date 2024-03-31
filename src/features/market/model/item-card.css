@@ -18,7 +18,7 @@
   object-fit: cover;
 }
 .item-card-container {
-  width: 100%;
+  width: 150px;
   display: flex;
   padding: 5%;
   align-items: center;

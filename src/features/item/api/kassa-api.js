@@ -2,14 +2,17 @@
 import axios from "axios";
 import {useHistory} from "react-router-dom";
 
-const getLink = async (index ) => {
+const getLink = async (index, history ) => {
     try {
-        const history = useHistory();
+        if (localStorage.getItem('Access') == null){
+            return "XUI"
+        }
         const response = await axios.get(`https://openstorebackendkotlin.onrender.com/kassa/${index}`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('Access')}`// Set the Authorization header with the token
             }
         });
+        console.log("LOLOLOLOLOO")
         // return link
         if (response.status === 200) {
             const responseData = response.data;
@@ -17,10 +20,9 @@ const getLink = async (index ) => {
             return responseData;
         } else {
             if(response.status === 403){
-                history.path("/logim")
-                return [];
+                return "XUI";
             }
-            else return []
+            else return "XUI"
         }
 
 
