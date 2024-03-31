@@ -32,7 +32,7 @@ const BodyHome = () => {
                 subtitle="Выберите подходящее"
             ></SectionHeading>
             <div className="home-cards-container">
-              <CategoryCard name="Книги"
+              <CategoryCard name="Библиотеки"
                             categoryImg="https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books_23-2149334862.jpg?t=st=1711221846~exp=1711225446~hmac=45c306f192670cb968462e87ac9a6a39236b937374a464bb1f7dfb80c58ef3ea&w=740"
                             ct="library"
               ></CategoryCard>

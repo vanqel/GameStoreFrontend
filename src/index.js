@@ -22,7 +22,6 @@ const App = () => {
       <Switch>
         <Route component={Auth} exact path="/login" />
         <Route component={Register} exact path="/register" />
-
         <Route component={Home} exact path="/" />
         <Route component={Market} path="/market" />
         <Route component={Item} path="/product" />
