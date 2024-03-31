@@ -21,7 +21,7 @@ const Profile = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const profile = await getMe(history);
+            const profile = await getMe();
             if (profile === 403){
                 localStorage.removeItem('username',);
                 localStorage.removeItem('id');
@@ -29,6 +29,7 @@ const Profile = () => {
                 localStorage.removeItem('Access')
                 localStorage.removeItem('Refresh')
                 history.push("/")
+                return
             }
             setProfile(profile);
         };

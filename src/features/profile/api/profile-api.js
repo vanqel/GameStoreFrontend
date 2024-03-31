@@ -1,6 +1,6 @@
 import axios from "axios";
 
-async function getMe(history) {
+async function getMe() {
     try {
         const response = await axios.get("https://openstorebackendkotlin.onrender.com/auth/me", {
             withCredentials: true, // Set withCredentials to true to include cookies
