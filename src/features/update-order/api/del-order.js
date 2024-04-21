@@ -1,7 +1,7 @@
 
 import '../../../app/home.css'
 import axios from "axios";
-const delProducts = async (index: number) => {
+const delProducts = async (index) => {
   try {
     let response = await axios.delete(`https://openstorebackendkotlin.onrender.com/product`, {
       data: {

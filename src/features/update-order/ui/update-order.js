@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import updateOrder from "../api/update-order";
-import getOrder from "../api/get-order";
+import getProducts from "../../market/api/market-api";
 import delOrder from "../api/del-order";
-const UpdateOrder = (index: number) => {
+
+const UpdateOrder = () => {
+    const [index, setIndex] = useState(0);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
@@ -11,24 +13,25 @@ const UpdateOrder = (index: number) => {
     const [image, setImage] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+
     const [order, setOrder] = useState(null);
+    useEffect(() => {
+        const getOneOrder = async () => {
+            const orders = await getProducts(null);
 
+            setOrder(orders);
+        };
+        getOneOrder()
+    }, null);
     const handleSubmit = async () => {
-        setOrder(getOrder(index));
-        useEffect(() => {
-            const getOneOrder = async () => {
-                const orders = await getOneOrder(index);
 
-                setOrder(orders);
-            };
-            getOneOrder();
-        }, null);
         try {
             setLoading(true);
-            if (title === '' || description === '' || price === '' || category === '' || linkDownload === '' || image == null){
+            if (index === 0 || title === '' || description === '' || price === '' || category === '' || linkDownload === '' || image == null) {
                 setError("Заполните все поля!");
-            }else {
+            } else {
                 const formData = new FormData();
+                formData.append('id', index);
                 formData.append('title', title);
                 formData.append('description', description);
                 formData.append('price', price);
@@ -36,7 +39,7 @@ const UpdateOrder = (index: number) => {
                 formData.append('linkDownload', linkDownload);
 
                 await updateOrder(formData, image)
-
+                setIndex(0);
                 setTitle('');
                 setDescription('');
                 setPrice('');
@@ -51,70 +54,81 @@ const UpdateOrder = (index: number) => {
         }
     };
 
-    const handleDelete = async () => {
+    const handleDelete = async (index) => {
         await delOrder(index);
     }
+
     return (
-        order.title && (
-            <div className="home-text23 ">
-                <form onSubmit={handleSubmit} style={{margin: "0", display: "flex"}}>
-                    <input
-                        className="home-textinput"
-                        style={{margin: 0.5 + '%'}}
-                        type="text"
-                        placeholder="Название"
-                        defaultValue={order.title}
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                    />
-                    <input
-                        className="home-textinput"
-                        style={{margin: 0.5 + '%'}}
-                        type="text"
-                        placeholder="Описание"
-                        defaultValue={order.description}
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                    />
-                    <input
-                        className="home-textinput"
-                        style={{margin: 0.5 + '%'}}
-                        type="number"
-                        placeholder="Цена"
-                        defaultValue={order.price}
-                        value={price}
-                        onChange={(e) => setPrice(e.target.value)}
-                        min="10"
-                    />
-                    <input
-                        className="home-textinput"
-                        style={{margin: 0.5 + '%'}}
-                        type="text"
-                        placeholder="Ссылка"
-                        value={linkDownload}
-                        onChange={(e) => setLinkDownload(e.target.value)}
-                    />
-                    <input
-                        className="home-textinput"
-                        style={{margin: 0.5 + '%'}}
-                        type="file"
-                        placeholder="Изображение"
-                        onChange={(e) => setImage(e.target.files[0])}
+        <div>
+            {
+                <div className="home-text23 ">
+                    <form onSubmit={handleSubmit} style={{margin: "0", display: "flex"}}>
+                        <select
+                            className="home-textinput"
+                            style={{margin: 0.5 + '%'}}
+                            value={index}
+                            onChange={(e) => setIndex(e.target.value)}>
+                            {
+                                order !== null && (order.map((o) => <option value={o.id}>Chain Validate</option>))
+                            }
+                        </select>
+                        <input
+                            className="home-textinput"
+                            style={{margin: 0.5 + '%'}}
+                            type="text"
+                            placeholder="Название"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                        />
+                        <input
+                            className="home-textinput"
+                            style={{margin: 0.5 + '%'}}
+                            type="text"
+                            placeholder="Описание"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                        />
+                        <input
+                            className="home-textinput"
+                            style={{margin: 0.5 + '%'}}
+                            type="number"
+                            placeholder="Цена"
+                            value={price}
+                            onChange={(e) => setPrice(e.target.value)}
+                            min="10"
+                        />
+                        <input
+                            className="home-textinput"
+                            style={{margin: 0.5 + '%'}}
+                            type="text"
+                            placeholder="Ссылка"
+                            value={linkDownload}
+                            onChange={(e) => setLinkDownload(e.target.value)}
+                        />
+                        <input
+                            className="home-textinput"
+                            style={{margin: 0.5 + '%'}}
+                            type="file"
+                            placeholder="Изображение"
+                            onChange={(e) => setImage(e.target.files[0])}
 
-                    />
-                </form>
-                <button className="button" type="submit" onClick={handleSubmit}>Обновить</button>
-                <button className="button" type="submit" onClick={handleDelete}>Удалить</button>
+                        />
+                    </form>
+                    <button className="button" type="submit" onClick={handleSubmit}>Обновить</button>
+                    <button className="button" type="submit" onClick={handleDelete}>Удалить</button>
 
-                <div style={{textAlign: "center"}}>
-                    {error && (
-                        <div>
-                            <span>Заполните все поля</span>
-                        </div>
-                    )}
+                    <div style={{textAlign: "center"}}>
+                        {error && (
+                            <div>
+                                <span>Заполните все поля</span>
+                            </div>
+                        )}
+                    </div>
                 </div>
-            </div>
-        )
+            }
+
+
+        </div>
 
 
     )

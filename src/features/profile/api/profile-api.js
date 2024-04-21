@@ -20,8 +20,10 @@ async function getMe() {
             return null;
         }
     } catch (error) {
-        if(error.data.statusCode === 403)
-        console.error("Request error:", error);
+        if(error.statusCode === 403){
+            console.error("Request error:", error);
+
+        }
         return [];
     }
 }

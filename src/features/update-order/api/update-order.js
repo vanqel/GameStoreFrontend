@@ -3,12 +3,15 @@ import axios from "axios";
 async function updateOrder (formData, image) {
     try {
 
-        const productResponse = await axios.post('https://openstorebackendkotlin.onrender.com/product', {
-            "title": formData.get('title'),
-            "description": formData.get('description'),
-            "link": formData.get('linkDownload'),
-            "category": formData.get('category'),
-            "price": formData.get('price')
+        const productResponse = await axios.put('https://openstorebackendkotlin.onrender.com/product', {
+            "pid": formData.get('id'),
+            "product":{
+                "title": formData.get('title'),
+                "description": formData.get('description'),
+                "link": formData.get('linkDownload'),
+                "category": formData.get('category'),
+                "price": formData.get('price')
+            }
         }, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('Access')}`,
@@ -26,8 +29,6 @@ async function updateOrder (formData, image) {
                         'Content-Type': 'multipart/form-data',
                     }
                 }
-
-
         )
 
 

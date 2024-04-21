@@ -6,6 +6,7 @@ import getOrders from "../api/orders";
 import Order from "../model/Order";
 import logout from "../../login/api/logout";
 import NewOrder from "../../get-all-order/ui/new-order";
+import UpdateOrder from "../../update-order/ui/update-order";
 
 const Profile = () => {
 
@@ -94,7 +95,17 @@ const Profile = () => {
                                          </span>
                                     </div>
                                     <br></br>
-                                    <NewOrder />
+                                    <NewOrder/>
+                                    <div>
+                                        <span className="home-text20">
+                                        <br></br>
+                                        <span>Обновить существующий </span>
+
+                                         </span>
+                                    </div>
+                                    <br></br>
+                                    <UpdateOrder/>
+
                                 </div>)
                             }
                         </div>
