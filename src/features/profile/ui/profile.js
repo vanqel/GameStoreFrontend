@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import '../../../app/home.css'
 import getMe from "../api/profile-api";
 import {useHistory} from "react-router-dom";
@@ -6,7 +6,7 @@ import getOrders from "../api/orders";
 import Order from "../model/Order";
 import logout from "../../login/api/logout";
 import NewOrder from "../../get-all-order/ui/new-order";
-import getAuth from "../api/admin-call";
+
 const Profile = () => {
 
     const history = useHistory();

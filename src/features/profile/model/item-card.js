@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import './item-card.css'
 import { useHistory } from 'react-router-dom';
-import UpdateOrder from "../../new-order/ui/update-order";
+import UpdateOrder from "../../update-order/ui/update-order";
 const ItemCardList = (props) => {
   const history = useHistory();
   
