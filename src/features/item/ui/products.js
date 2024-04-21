@@ -4,7 +4,7 @@ import getProductOne from '../api/market-api';
 import ItemPage from "../model/item-page";
 import NotFound from "../../../pages/not_found/not-found";
 import { useHistory } from "react-router-dom";
-import InfiniteLoading from "../../Loading/ui/Loader";
+import InfiniteLoading from "../../loading/ui/Loader";
 const GetProductsPage = ({ index }) => {
     const history = useHistory();
     const [product, setProduct] = useState(null);

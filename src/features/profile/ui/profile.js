@@ -5,7 +5,7 @@ import {useHistory} from "react-router-dom";
 import getOrders from "../api/orders";
 import Order from "../model/Order";
 import logout from "../../login/api/logout";
-import NewOrder from "../../new-order/ui/new-order";
+import NewOrder from "../../get-all-order/ui/new-order";
 import getAuth from "../api/admin-call";
 const Profile = () => {
 
@@ -94,7 +94,7 @@ const Profile = () => {
                                          </span>
                                     </div>
                                     <br></br>
-                                    <NewOrder/>
+                                    <NewOrder />
                                 </div>)
                             }
                         </div>

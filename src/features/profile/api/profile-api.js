@@ -17,12 +17,10 @@ async function getMe() {
 
             return responseData;
         } else {
-            if(response.status === 403){
-                return 403
-            }
-            else return null;
+            return null;
         }
     } catch (error) {
+        if(error.data.statusCode === 403)
         console.error("Request error:", error);
         return [];
     }
