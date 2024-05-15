@@ -22,7 +22,7 @@ const UpdateOrder = () => {
             setOrder(orders);
         };
         getOneOrder()
-    }, null);
+    }, []);
     const handleSubmit = async () => {
 
         try {
@@ -69,7 +69,7 @@ const UpdateOrder = () => {
                             value={index}
                             onChange={(e) => setIndex(e.target.value)}>
                             {
-                                order !== null && (order.map((o) => <option value={o.id}>Chain Validate</option>))
+                                order !== null && (order.map((o) => <option value={o.id}>Космическая дуэль</option>))
                             }
                         </select>
                         <input
