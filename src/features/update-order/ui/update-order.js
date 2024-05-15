@@ -69,7 +69,7 @@ const UpdateOrder = () => {
                             value={index}
                             onChange={(e) => setIndex(e.target.value)}>
                             {
-                                order !== null && (order.map((o) => <option value={o.id}>Космическая дуэль</option>))
+                                order !== null && (order.map((o) => <option value={o.id}>${o.name}</option>))
                             }
                         </select>
                         <input
